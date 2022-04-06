@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="WeatherAPI.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Weather App">
+
+    <StackLayout BackgroundColor="LightSkyBlue">
+        <Grid VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackLayout
+                Margin="0,20"
+                HorizontalOptions="Center"
+                Orientation="Vertical"
+                VerticalOptions="Center">
+                <StackLayout
+                    Margin="20,40"
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal">
+                    <Image
+                        x:Name="weatherImg"
+                        HeightRequest="50"
+                        Source="https://img.icons8.com/office/344/partly-cloudy-night--v1.png"
+                        VerticalOptions="Center"
+                        WidthRequest="50" />
+                    <Label
+                        x:Name="lblTempC"
+                        FontAttributes="Bold"
+                        FontSize="60"
+                        Text="C"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                    <Label
+                        FontSize="34"
+                        Text="°C"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                </StackLayout>
+                <Label
+                    x:Name="lblCondition"
+                    FontSize="16"
+                    HorizontalOptions="Center"
+                    Text="Condition Here!"
+                    TextColor="Black" />
+                <Label
+                    x:Name="lblLocation"
+                    FontSize="12"
+                    HorizontalOptions="Center"
+                    Text="City, Province, Country"
+                    TextColor="Black" />
+
+                <Label
+                    x:Name="lblCoordinates"
+                    FontSize="12"
+                    HorizontalOptions="Center"
+                    Text="Lat, Long"
+                    TextColor="Black" />
+            </StackLayout>
+
+            <Frame
+                Grid.Row="1"
+                Margin="20,30,20,0"
+                Padding="0"
+                CornerRadius="10"
+                HasShadow="True"
+                HeightRequest="120"
+                VerticalOptions="Start">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackLayout
+                        HorizontalOptions="CenterAndExpand"
+                        Orientation="Vertical"
+                        Spacing="10">
+                        <Image
+                            HeightRequest="25"
+                            HorizontalOptions="Center"
+                            Source="https://img.icons8.com/office/344/wet.png" />
+                        <StackLayout HorizontalOptions="CenterAndExpand" Spacing="7">
+                            <Label
+                                x:Name="lblHumidity"
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                HorizontalOptions="Center"
+                                Text="0 %"
+                                TextColor="Black" />
+                            <Label
+                                FontSize="11"
+                                HorizontalOptions="Center"
+                                Text="Humidity"
+                                TextColor="#7D7D7D" />
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Column="1"
+                        HorizontalOptions="CenterAndExpand"
+                        Orientation="Vertical"
+                        Spacing="10">
+                        <Image
+                            HeightRequest="25"
+                            HorizontalOptions="Center"
+                            Source="https://img.icons8.com/office/344/thermometer.png" />
+                        <StackLayout HorizontalOptions="CenterAndExpand" Spacing="7">
+                            <Label
+                                x:Name="lblFeelsLike"
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                HorizontalOptions="Center"
+                                Text="0 °C"
+                                TextColor="Black" />
+                            <Label
+                                FontSize="11"
+                                HorizontalOptions="Center"
+                                Text="Feels Like"
+                                TextColor="#7D7D7D" />
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Column="2"
+                        HorizontalOptions="CenterAndExpand"
+                        Orientation="Vertical"
+                        Spacing="10">
+                        <Image
+                            HeightRequest="25"
+                            HorizontalOptions="Center"
+                            Source="https://img.icons8.com/dusk/344/thermometer--v1.png" />
+                        <StackLayout HorizontalOptions="CenterAndExpand" Spacing="7">
+                            <Label
+                                x:Name="lblTempF"
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                HorizontalOptions="Center"
+                                Text="0 °f"
+                                TextColor="Black" />
+                            <Label
+                                FontSize="11"
+                                HorizontalOptions="Center"
+                                Text="Temperature in f"
+                                TextColor="#7D7D7D" />
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Column="3"
+                        HorizontalOptions="CenterAndExpand"
+                        Orientation="Vertical"
+                        Spacing="10">
+                        <Image
+                            HeightRequest="25"
+                            HorizontalOptions="Center"
+                            Source="https://img.icons8.com/office/344/visible--v1.png" />
+                        <StackLayout HorizontalOptions="CenterAndExpand" Spacing="7">
+                            <Label
+                                x:Name="lblVisibility"
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                HorizontalOptions="Center"
+                                Text="0 km"
+                                TextColor="Black" />
+                            <Label
+                                FontSize="11"
+                                HorizontalOptions="Center"
+                                Text="Visibility"
+                                TextColor="#7D7D7D" />
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+
+            <StackLayout Grid.Row="2" Margin="0,30">
+
+                <Entry
+                    x:Name="edtCity"
+                    HorizontalTextAlignment="Center"
+                    Placeholder="Enter City"
+                    VerticalOptions="Center" />
+
+                <Button
+                    x:Name="btnGetWeather"
+                    BackgroundColor="White"
+                    Clicked="btnGetWeather_Clicked"
+                    CornerRadius="15"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Go!"
+                    VerticalOptions="Center" />
+            </StackLayout>
+        </Grid>
+    </StackLayout>
+</ContentPage>
